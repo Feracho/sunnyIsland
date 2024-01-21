@@ -284,7 +284,7 @@ function FlickeringLight() {
 function RedPepper({ count = 20 }) {
   const { viewport, clock } = useThree()
   const model = useRef()
-  const { nodes } = useGLTF('/redPepper.glb');
+  const { nodes } = useGLTF('https://sunnyisland.s3.us-east-2.amazonaws.com/media/glb/redPepper.glb');
   // Create random position data
   const dummy = useMemo(() => new THREE.Object3D(), [])
   const pepper = useMemo(
@@ -330,7 +330,7 @@ function RedPepper({ count = 20 }) {
 function YellowPepper({ count = 40 }) {
   const { viewport, clock } = useThree()
   const model = useRef()
-  const { nodes } = useGLTF('/yellowPepper.glb');
+  const { nodes } = useGLTF('https://sunnyisland.s3.us-east-2.amazonaws.com/media/glb/yellowPepper.glb');
   // Create random position data
   const dummy = useMemo(() => new THREE.Object3D(), [])
   const pepper = useMemo(
