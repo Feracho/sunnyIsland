@@ -7,7 +7,8 @@ import React, { useRef } from 'react'
 
 export default function YellowPepper(props) {
   const group = useRef()
-  const { nodes, materials } = useGLTF('/yellowPepper.glb')
+ //const { nodes, materials } = useGLTF('/yellowPepper.glb')
+  const { nodes, materials } = useGLTF('https://sunnyisland.s3.us-east-2.amazonaws.com/media/glb/yellowPepper.glb')
   return (
     <group ref={group} {...props} dispose={null}>
       <mesh geometry={nodes.modelobj.geometry} material={nodes.modelobj.material} />
@@ -15,4 +16,7 @@ export default function YellowPepper(props) {
   )
 }
 
-useGLTF.preload('/yellowPepper.glb')
+
+
+useGLTF.preload('https://sunnyisland.s3.us-east-2.amazonaws.com/media/glb/yellowPepper.glb')
+//useGLTF.preload('/yellowPepper.glb')

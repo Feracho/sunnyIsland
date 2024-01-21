@@ -7,7 +7,9 @@ import React, { useRef } from 'react'
 
 export default function PepperSauce(props) {
   const group = useRef()
-  const { nodes, materials } = useGLTF('/PepperSauce.glb')
+  //const { nodes, materials } = useGLTF('/PepperSauce.glb')
+  const { nodes, materials } = useGLTF(' https://sunnyisland.s3.us-east-2.amazonaws.com/media/glb/PepperSauce.glb')
+ 
   return (
     <group ref={group} scale={.0075} {...props} dispose={null}>
       <mesh
@@ -38,4 +40,5 @@ export default function PepperSauce(props) {
   )
 }
 
-useGLTF.preload('/PepperSauce.glb')
+//useGLTF.preload('/PepperSauce.glb')
+useGLTF.preload('https://sunnyisland.s3.us-east-2.amazonaws.com/media/glb/PepperSauce.glb')

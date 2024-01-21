@@ -7,7 +7,8 @@ import React, { useRef } from 'react'
 
 export default function Logo(props) {
   const group = useRef()
-  const { nodes, materials } = useGLTF('/SunnyIslandLogo.glb')
+  const { nodes, materials } = useGLTF('https://sunnyisland.s3.us-east-2.amazonaws.com/media/glb/SunnyIslandLogo.glb')
+  //const { nodes, materials } = useGLTF('/SunnyIslandLogo.glb')
   return (
     <group ref={group} {...props} scale={1.25} dispose={null}>
       <mesh geometry={nodes.Curve.geometry} material={materials.PaletteMaterial003} />
@@ -15,4 +16,5 @@ export default function Logo(props) {
   )
 }
 
-useGLTF.preload('/SunnyIslandLogo.glb')
+useGLTF.preload('https://sunnyisland.s3.us-east-2.amazonaws.com/media/glb/SunnyIslandLogo.glb')
+//useGLTF.preload('/SunnyIslandLogo.glb')
