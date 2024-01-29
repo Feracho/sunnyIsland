@@ -39,7 +39,9 @@ export default function App() {
   const yellowPepperCount = perfSucks ? 10 : 30;
   const [showEffectComposer, setShowEffectComposer] = useState(true);
   const [showPeppers, setShowPeppers] = useState(true);
+  const [flameOn, setFlameOn] = useState(false);
 
+  const toggleFlame = () => setFlameOn(!flameOn);
   const togglePeppers = () => {
     setShowPeppers(!showPeppers);
   };
@@ -76,8 +78,9 @@ export default function App() {
           <>
             <RedPepper count={redPepperCount} />
             <YellowPepper count={yellowPepperCount} />
-            <Fire color="red" position={[0.5, 1.5, 0]} scale={10} />
-      <FlickeringLight position={[0, 1, 0]} />
+            {flameOn &&<> <Fire color="red" position={[0.5, 1.5, 0]} scale={10} />      <FlickeringLight position={[0, 1, 0]} /> </>}
+      
+ 
           </>
         )}
       </group>
@@ -93,15 +96,19 @@ export default function App() {
 
       {showEffectComposer && (
         <EffectComposer>
-        <Bloom luminanceThreshold={0.8} luminanceSmoothing={0.05} intensity={20} levels={3.5} mipmapBlur />
+        <Bloom luminanceThreshold={0.8} luminanceSmoothing={0.05} intensity={1} levels={3.5} mipmapBlur />
         <DepthOfField target={[0, -10, -10]} focalLength={0.1} bokehScale={10} height={10000} />
       </EffectComposer>
         )}
     </Canvas>
-    <Overlay  inspectMode={inspectMode}
+    <Overlay  
+    flameOn = {flameOn}
+    setFlameOn={setFlameOn}
+    inspectMode={inspectMode}
         setInspectMode={setInspectMode}
         togglePeppers={togglePeppers}
-        toggleLights={toggleLights}/>
+        toggleLights={toggleLights}
+        toggleFlame={toggleFlame} />
     </>
   )
 }
@@ -133,7 +140,7 @@ function Env({ perfSucks }) {
   })
   // Runtime environments can be too slow on some systems, better safe than sorry with PerfMon
   return (
-    <Environment frames={perfSucks ? 1 : Infinity} preset="night" resolution={2048} background blur={0.1}>
+    <Environment frames={perfSucks ? 1 : Infinity} preset="night" resolution={2048} background blur={1}>
       <Lightformer intensity={4} rotation-x={Math.PI / 2} position={[0, 5, -9]} scale={[10, 10, 1]} />
       <Lightformer intensity={4} rotation-x={Math.PI / 2} position={[0, 5, -9]} scale={[10, 10, 1]} />
       <group rotation={[Math.PI / 2, 1, 0]}>
@@ -281,16 +288,19 @@ function FlickeringLight() {
 //RedPeppers YellowPeppers
 
 
-function RedPepper({ count = 20 }) {
+function RedPepper({ count = 5 }) {
   const { viewport, clock } = useThree()
   const model = useRef()
   const { nodes } = useGLTF('https://sunnyisland.s3.us-east-2.amazonaws.com/media/glb/redPepper.glb');
   // Create random position data
-  const dummy = useMemo(() => new THREE.Object3D(), [])
+  const dummy = useMemo(() => new THREE.Object3D(), []);
   const pepper = useMemo(
-    () =>
-      new Array(count).fill().map((_, i) => ({
-        position: [THREE.MathUtils.randFloatSpread(viewport.width * 7.5), 40 - Math.random() * 40, THREE.MathUtils.randFloatSpread(15) - 30],
+    () => new Array(count).fill().map((_, i) => ({
+      position: [
+        THREE.MathUtils.randFloatSpread(viewport.width), // Adjust the spread to cover more x space
+        40 - Math.random() * 40,
+        THREE.MathUtils.randFloatSpread(15) - 30
+      ],
         factor: 0.75 + Math.random() * 2,
         direction: Math.random() < 0.5 ? -1 : 1,
         rotation: [Math.sin(Math.random()) * Math.PI, Math.sin(Math.random()) * Math.PI, Math.cos(Math.random()) * Math.PI]
@@ -327,7 +337,7 @@ function RedPepper({ count = 20 }) {
   )
 }
 
-function YellowPepper({ count = 40 }) {
+function YellowPepper({ count = 10 }) {
   const { viewport, clock } = useThree()
   const model = useRef()
   const { nodes } = useGLTF('https://sunnyisland.s3.us-east-2.amazonaws.com/media/glb/yellowPepper.glb');
@@ -336,7 +346,7 @@ function YellowPepper({ count = 40 }) {
   const pepper = useMemo(
     () =>
       new Array(count).fill().map((_, i) => ({
-        position: [THREE.MathUtils.randFloatSpread(viewport.width * 7.5), 40 - Math.random() * 40, THREE.MathUtils.randFloatSpread(15) - 20],
+        position: [THREE.MathUtils.randFloatSpread(viewport.width * 20), 40 - Math.random() * 40, THREE.MathUtils.randFloatSpread(15) - 20],
         factor: 0.75 + Math.random() * 2,
         direction: Math.random() < 0.5 ? -1 : 1,
         rotation: [Math.sin(Math.random()) * Math.PI, Math.sin(Math.random()) * Math.PI, Math.cos(Math.random()) * Math.PI]

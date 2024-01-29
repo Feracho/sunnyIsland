@@ -13,6 +13,9 @@ export const RecipesContainer = styled(motion.div)`
   padding: 20px;
   box-sizing: border-box;
   z-index: 100;
+  @media (max-width: 600px) {
+  width: 100vw;
+  }
 `;
 
 export const RecipeCard = styled.div`

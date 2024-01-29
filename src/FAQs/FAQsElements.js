@@ -5,21 +5,51 @@ import { MdCancel } from 'react-icons/md';
 import styled, { keyframes } from 'styled-components';
 
 export const FAQContainer = styled(motion.div)`
-  position: fixed;
-  right: 0;
-  top: 0;
-  width: 35vw;
-  height: 100vh;
-/*
-* Created with https://www.css-gradient.com
-* Gradient link: https://www.css-gradient.com/?c1=010101&c2=f8f03b&gt=r&gd=dtl
-*/
-background: #010101;
-background: radial-gradient(at left top, #000, #000, #F8F03B, #000, #000);
-  overflow-y: scroll;
-  padding: 20px;
   box-sizing: border-box;
-  z-index: 100;
+  position: fixed;
+  width: 800px;
+  height: 600px;
+  border-radius: 20px;
+  overflow: scroll;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 15%;
+  z-index: 99999999;
+  box-shadow: 10px 0px 20px 0px rgba(0, 0, 0, 0.2);
+
+  background: radial-gradient(
+    circle,
+    rgba(255, 215, 1, 0.2) 10%, 
+    rgba(255, 205, 1, 0.2) 20%, 
+    rgba(255, 193, 0, 0.2) 30%, 
+    rgba(250, 144, 6, 0.2) 40%, 
+    rgba(244, 93, 0, 0.2) 50%, 
+    rgba(246, 93, 2, 0.2) 60%, 
+    rgba(253, 110, 16, 0.2) 70%, 
+    rgba(255, 70, 13, 0.2) 80%, 
+    rgba(223, 9, 22, 0.2) 90%, 
+    rgba(196, 2, 28, 0.2) 95%, 
+    rgba(186, 3, 29, 0.2) 100%
+  ), #fff;
+
+  @media screen and (max-width: 1200px) {
+    zoom: 0.9;
+  }
+  @media screen and (max-width: 960px) {
+    zoom: 0.8;
+    width: 700px;
+  }
+  @media screen and (max-width: 768px) {
+    top: 25%;
+    zoom: 0.7;
+  }
+  @media screen and (max-width: 550px) {
+    zoom: 0.65;
+    width: 650px;
+  }
+  @media screen and (max-width: 550px) {
+    zoom: 0.6;
+  }
 `;
 
 
@@ -133,6 +163,7 @@ export const Wrapper = styled.div`
  // background: linear-gradient(270deg, #333, #555, #999, #CCC, #FFF);
   top: 15%;
   left: 50%;
+  color: #000;
   transform: translateX(-50%);
 position: fixed;
 overflow: scroll;
@@ -172,52 +203,44 @@ export const Wrapper = styled.div`
 */
 
 export const AccordionButton = styled.div`
-  width: 100%;
- // background-color: none;
-//  border: 2px solid;
+width: 100%;
   position: relative;
-  //border-image-source: linear-gradient(270deg, #333, #555, #999, #CCC, #FFF);
- // border-image-slice: 1;
   padding: 1em;
-  transition: all 0.25s ease;
-  //background: rgba(0, 0, 0, 0.1);
-
-
   font-size: 1em;
-  color: #fff;
+  color: #000;
   outline: none;
   backdrop-filter: blur(10px);
   transition: all 200ms linear;
-box-sizing: border-box;
-border-bottom: 1px solid #e5e5e5;
+  box-sizing: border-box;
+  border-bottom: 1px solid #e5e5e5;
+  
   &:last-child {
     border-bottom: none;
   }
-//box-shadow: 10px 0px 20px 0px rgba(0, 0, 0, 0.2);
-
 
   &:hover, &.active {
-    //background: rgba(255, 255, 255, 0.2);
     cursor: pointer;
+    background: linear-gradient(
+      90deg,
+      rgba(255, 215, 1, 0.8) 0%,
+      rgba(255, 205, 1, 0.8) 11.11%,
+      rgba(255, 193, 0, 0.8) 22.22%,
+      rgba(250, 144, 6, 0.8) 33.33%,
+      rgba(244, 93, 0, 0.8) 44.44%,
+      rgba(246, 93, 2, 0.8) 55.55%,
+      rgba(253, 110, 16, 0.8) 66.66%,
+      rgba(255, 70, 13, 0.8) 77.77%,
+      rgba(223, 9, 22, 0.8) 88.88%,
+      rgba(196, 2, 28, 0.8) 100%
+    );
   }
-  &:hover,
-  &:focus {
-    color: #DA1A35; /* Use the provided dark green color */
 
-    &::after {
-      cursor: pointer;
-      color: #DA1A35; /* Use the provided dark green color */
-     // border: 1px solid #00ff01; /* Use the provided dark green color */
-    }
-  }
   &::after {
-    content: '${props => (props.isActive ? '-' : '+')}'; // Use props to determine the content
-    // ...other styles for the sign...
+    content: '${props => (props.isActive ? '-' : '+')}';
     position: absolute;
-    right: 10px; // Position the sign to the right
+    right: 10px;
     top: 50%;
     transform: translateY(-50%);
-    
   }
 `;
 
@@ -257,7 +280,7 @@ export const Container = styled.div`
   margin: 0 auto;
   margin-top: 0px;
   padding: 3rem;
-  width: 32.5vw;
+  width: 48vw;
   height: 100vh;
   color: ${({ isDarkMode }) => (isDarkMode ? '#000' : '#fff')};
   h2 {
@@ -294,34 +317,46 @@ export const Button = styled.button`
   text-align: left;
   width: 100%;
   padding: 1em 0;
- // color: #1f5210; /* Use the provided green color */
- color: ${({ isDarkMode }) => (isDarkMode ? '#000' : '#fff')};
+  color: ${({ isDarkMode }) => (isDarkMode ? '#000' : '#fff')};
   font-size: 1.15rem;
   font-weight: 400;
   border: none;
-  background: none;
+  background: #fff;
   outline: none;
   cursor: pointer;
 
+
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent; /* Make the text color transparent so the gradient shows through */
+
   &:hover,
   &:focus {
-    color: #DA1A35; /* Use the provided dark green color */
-
-    &::after {
-      cursor: pointer;
-      color: #DA1A35; /* Use the provided dark green color */
-     // border: 1px solid #00c5ff; /* Use the provided dark green color */
-      
-    }
+    background: linear-gradient(
+    90deg,
+    rgba(255, 215, 1, 1) 0%, 
+    rgba(255, 205, 1, 1) 10%, 
+    rgba(255, 193, 0, 1) 20%, 
+    rgba(250, 144, 6, 1) 30%, 
+    rgba(244, 93, 0, 1) 40%, 
+    rgba(246, 93, 2, 1) 50%, 
+    rgba(253, 110, 16, 1) 60%, 
+    rgba(255, 70, 13, 1) 70%, 
+    rgba(223, 9, 22, 1) 80%, 
+    rgba(196, 2, 28, 1) 90%, 
+    rgba(186, 3, 29, 1) 100%
+  );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
   }
+
   &::after {
-    content: '${props => (props.expanded ? '-' : '+')}'; // Use props to determine the content
-    // ...other styles for the sign...
+    content: '${props => (props.expanded ? '-' : '+')}';
     position: absolute;
-    right: 10px; // Position the sign to the right
+    right: 10px;
     top: 50%;
     transform: translateY(-50%);
-    
   }
 `;
 
