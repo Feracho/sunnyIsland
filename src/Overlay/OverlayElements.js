@@ -10,11 +10,14 @@ export const SearchIcon = styled(IoIosSearch)`
   font-size: 24px; // Example size, adjust as needed
   margin-left: 8px; // Spacing between text and icon
   position: relative;
+  top: 5px; 
   //right: 5%;
 
   // Add other styles if needed
     @media (max-width: 600px) {
-    transform: scale(0.7);
+    transform: scale(1.5);
+
+
   }
 `;
 
@@ -120,10 +123,10 @@ export const Button = styled.div`
 export const InspectBottleButton = styled(Button)`
   bottom: 3%;
   left: 50%;
-  padding: 5px 20px 10px 20px;
+  padding: 10px 15px 15px 20px;
   transform: translateX(-50%); // Center the button
   @media (max-width: 600px) {
-    transform: translateX(-50%) scale(0.7);
+    transform: translateX(-50%) scale(1);
   }
 `;
 
@@ -144,7 +147,37 @@ export const OurStoryButton = styled(Button)`
 
 export const RecipesButton = styled(Button)`
   left: calc(3% + 100px); /* Adjust based on button width */
+  @media (max-width: 600px) {
+    left: calc(61.5% + 100px); /* Adjust based on button width */
+  }
 `;
+
+
+
+export const IconContainerWrap = styled.div`
+  // Other styles for IconContainerWrap remain unchanged
+
+  @media (max-width: 600px) {
+    height: 100px; // Adjust the height to fit all icons evenly spaced
+    width: 50px; // Set a specific width
+    border-radius: 10px;
+    display: flex;
+    position: fixed;
+    background-color: #aaaaaa;
+    right: -3%; // Positioned 3% from the right of the screen
+    bottom: 15%; // Positioned 10% from the bottom of the screen
+    flex-direction: column; // Stack the icons vertically
+    justify-content: space-around; // Evenly space the icons vertically
+    align-items: center; // Center the icons horizontally
+    padding: 10px 0; // Add padding at the top and bottom for spacing
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); // Optional: add a shadow for better visibility
+    transform: scale(1.5);
+  }
+`;
+
+
+
+
 
 export const FAQs = styled(Button)`
   right: 3%;
@@ -160,18 +193,17 @@ export const FAQIconContainer = styled.div`
   flex-direction: column;
   cursor: pointer;
   transition: transform 0.2s ease-in-out, opacity 0.2s ease; // Smooth transition for hover effect
-
+  z-index: 99999;
 &:hover {
   transform: scale(1.02); // Slightly increase size when hovered
   opacity: 0.8; // Reduce opacity when hovered
 }
 
-@media (max-width: 600px) {
-  transform: scale(0.7); // Default scale for mobile
-  &:hover {
-    transform: scale(0.72); // Adjust hover scale for mobile
+
+  @media (max-width: 600px) {
+    bottom: 5%;
+  right: 42.5%; 
   }
-}
 `;
 
 export const FAQIcon = styled(FaQuestionCircle)`
@@ -186,6 +218,9 @@ export const FAQText = styled.span`
   font-size: 14px; // Adjust as needed
   color: white;
   margin-top: 8px; // Spacing between icon and text
+  @media (max-width: 600px) {
+    display: none;
+  }
 `;
 
 export const ContactIconContainer = styled.div`
@@ -198,19 +233,19 @@ export const ContactIconContainer = styled.div`
   flex-direction: column;
   cursor: pointer;
   transition: transform 0.2s ease-in-out, opacity 0.2s ease; // Smooth transition for hover effect
-
+  z-index: 99999;
 &:hover {
   transform: scale(1.02); // Slightly increase size when hovered
   opacity: 0.8; // Reduce opacity when hovered
 }
 
-@media (max-width: 600px) {
-  transform: scale(0.7); // Default scale for mobile
-  &:hover {
-    transform: scale(0.72); // Adjust hover scale for mobile
+
+  @media (max-width: 600px) {
+    bottom: 37.5%;
+  right: 42.5%; 
   }
-}
 `;
+
 
 export const ContactIcon = styled(IoIosMail)`
   font-size: 24px;
@@ -224,6 +259,9 @@ export const ContactText = styled.span`
   font-size: 14px;
   color: white;
   margin-top: 8px;
+  @media (max-width: 600px) {
+    display: none;
+  }
 `;
 
 export const FollowUsIconContainer = styled.div`
@@ -236,17 +274,16 @@ export const FollowUsIconContainer = styled.div`
   flex-direction: column;
   cursor: pointer;
   transition: transform 0.2s ease-in-out, opacity 0.2s ease; // Smooth transition for hover effect
-
+  z-index: 99999;
 &:hover {
   transform: scale(1.02); // Slightly increase size when hovered
   opacity: 0.8; // Reduce opacity when hovered
 }
 
 @media (max-width: 600px) {
-  transform: scale(0.7); // Default scale for mobile
-  &:hover {
-    transform: scale(0.72); // Adjust hover scale for mobile
-  }
+  bottom: 70%;
+  right: 42.5%; 
+
 }
 `;
 
@@ -255,7 +292,7 @@ export const FollowUsIcon = styled(IoIosPeople)`
   border-radius: 100%;
   background-color: #fff;
   padding: 2px;
-  z-index: 99999;
+
 
 `;
 
@@ -263,6 +300,9 @@ export const FollowUsText = styled.span`
   font-size: 14px;
   color: white;
   margin-top: 8px;
+  @media (max-width: 600px) {
+    display: none;
+  }
 `;
 
 // Social Media Popup
@@ -277,6 +317,10 @@ export const SocialMediaPopup = styled.div`
   justify-content: space-around;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   z-index: 9999999999; // Ensure it's above other elements
+  @media (max-width: 600px) {
+    right: 8%; 
+    bottom: 195px;
+  }
 `;
 
 // Social Media Icon

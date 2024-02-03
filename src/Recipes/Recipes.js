@@ -8,14 +8,15 @@ import {
   RecipeImage,
   RecipeLink,
   RecipeTitle,
-  RecipesContainer
+  RecipesContainer,
+  RecipesWrap
 } from './RecipesElements'; // Adjust the path as necessary
 export function Recipes({ isOpen, onClose }) {
   return (
     <RecipesContainer
-      initial={{ x: '-100%' }}
-      animate={isOpen ? { x: 0 } : { x: '-100%' }}
-      transition={{ type: 'spring', stiffness: 100 }}
+
+  >
+    <RecipesWrap
     >
       <ExitContainer className='close-btn'  onClick={onClose}>
       <Circle>
@@ -31,6 +32,7 @@ export function Recipes({ isOpen, onClose }) {
           <RecipeLink href={recipe.link}>Read More</RecipeLink>
         </RecipeCard>
       ))}
+    </RecipesWrap>
     </RecipesContainer>
   );
 }

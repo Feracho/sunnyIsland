@@ -1,3 +1,4 @@
+import { Physics, useBox } from '@react-three/cannon';
 import {
   AccumulativeShadows,
   CubeCamera,
@@ -9,12 +10,12 @@ import {
   useGLTF
 } from '@react-three/drei';
 import { Canvas, extend, useFrame, useLoader, useThree } from '@react-three/fiber';
-import { Bloom, DepthOfField, EffectComposer } from "@react-three/postprocessing";
 import glsl from 'babel-plugin-glsl/macro';
 import { easing } from 'maath';
 import { useLayoutEffect, useMemo, useRef, useState } from 'react';
 import * as THREE from 'three';
 import PepperSauce from './Models/PepperSauce';
+import Peppers from './Models/Peppers';
 import Logo from './Models/SunnyIslandLogo';
 import { Overlay } from './Overlay/Overlay';
 const innerMaterial = new THREE.MeshStandardMaterial({
@@ -29,8 +30,19 @@ const innerMaterial = new THREE.MeshStandardMaterial({
   envMapIntensity: 2
 })
 
+function PhysicsPepperSauce() {
+  const [ref] = useBox(() => ({
+    position: [0, 0.5, 0], // Adjust based on actual position
+    args: [1, 1, 1], // Adjust the size to match PepperSauce
+    static: true,
+  }));
 
-
+  return (
+    <mesh ref={ref}>
+      <PepperSauce />
+    </mesh>
+  );
+}
 export default function App() {
   const [perfSucks, degrade] = useState(false);
   const [inspectMode, setInspectMode] = useState(false);
@@ -62,6 +74,21 @@ export default function App() {
       eventPrefix="client"
       
       camera={{ position: [20, 0.9, 20], fov: 26 }} >
+         <Physics>
+      <group position={[0,0,-5]}>
+            {showPeppers && (
+          <>
+          {/*
+            <RedPepper count={redPepperCount} />
+            <YellowPepper count={yellowPepperCount} />
+           */} 
+           <Peppers speed={2} />
+           
+      
+ 
+          </>
+        )}
+        </group>
        {inspectMode && <OrbitControls />}
       {/** PerfMon will detect performance issues */}
       <PerformanceMonitor onDecline={() => degrade(true)} />
@@ -73,16 +100,12 @@ export default function App() {
       <group position={[0, 0, -2]}> {/* Adjust position to place behind the model */}
 
       </group>
-      <group position={[-1, 0, 0]}>
-      {showPeppers && (
-          <>
-            <RedPepper count={redPepperCount} />
-            <YellowPepper count={yellowPepperCount} />
-            {flameOn &&<> <Fire color="red" position={[0.5, 1.5, 0]} scale={10} />      <FlickeringLight position={[0, 1, 0]} /> </>}
       
- 
-          </>
-        )}
+      <group position={[-1, 0, 0]}>
+
+
+             {flameOn &&<> <Fire color="red" position={[0.5, 1.5, 0]} scale={10} />      <FlickeringLight position={[0, 1, 0]} /> </>}
+      
       </group>
         <PepperSauce />
  
@@ -91,14 +114,12 @@ export default function App() {
           <RandomizedLight amount={8} radius={6} ambient={0.5} intensity={10} position={[-1.5, 2.5, -2.5]} bias={0.001} />
         </AccumulativeShadows>
       </group>
+      </Physics>
       <Env perfSucks={perfSucks} />
 
 
       {showEffectComposer && (
-        <EffectComposer>
-        <Bloom luminanceThreshold={0.8} luminanceSmoothing={0.05} intensity={1} levels={3.5} mipmapBlur />
-        <DepthOfField target={[0, -10, -10]} focalLength={0.1} bokehScale={10} height={10000} />
-      </EffectComposer>
+ <></>
         )}
     </Canvas>
     <Overlay  
@@ -140,7 +161,7 @@ function Env({ perfSucks }) {
   })
   // Runtime environments can be too slow on some systems, better safe than sorry with PerfMon
   return (
-    <Environment frames={perfSucks ? 1 : Infinity} preset="night" resolution={2048} background blur={1}>
+    <Environment frames={perfSucks ? 1 : Infinity} >
       <Lightformer intensity={4} rotation-x={Math.PI / 2} position={[0, 5, -9]} scale={[10, 10, 1]} />
       <Lightformer intensity={4} rotation-x={Math.PI / 2} position={[0, 5, -9]} scale={[10, 10, 1]} />
       <group rotation={[Math.PI / 2, 1, 0]}>

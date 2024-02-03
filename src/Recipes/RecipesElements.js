@@ -1,28 +1,70 @@
-// StyledRecipes.js
 import { motion } from 'framer-motion';
 import styled from 'styled-components';
 
-export const RecipesContainer = styled(motion.div)`
+
+export const RecipesContainer =  styled.div`
   position: fixed;
-  left: 0;
-  top: 0;
-  width: 35vw;
-  height: 100vh;
+  left: 50%;
+  top: 50%; /* Adjust to 50% to center vertically as well */
+  transform: translate(-50%, -50%); /* Adjust for both X and Y axis */
+  width: 80vw;
+  height: 90vh;
   background: linear-gradient(135deg, #000000, #DA1A35, #000000);
-  overflow-y: scroll;
-  padding: 20px;
+  overflow-y: scroll; /* Keep this for vertical scrolling */
+
   box-sizing: border-box;
   z-index: 100;
-  @media (max-width: 600px) {
-  width: 100vw;
+  border-radius: 30px;
+  display: block;
+
+
+  @media (min-width: 601px) and (max-width: 1000px) {
+    grid-template-columns: repeat(2, 1fr); /* Adjust for 2 columns */
+  }
+
+  /* This media query seems to be redundant because it sets the same values as outside of any media query.
+     Consider removing or adjusting it if you want different styles for other screen sizes. */
+
+
+  @media (max-width: 601px) {
+    width: 100vw; /* Keep 80vw width for larger screens */
+    height: 100vh;
+    grid-template-columns: repeat(3, 1fr); /* Adjust back to 3 columns */
+    border-radius: 0;
+  }
+`
+export const RecipesWrap = styled(motion.div)`
+  padding: 100px;
+  display: grid;
+  
+  grid-template-columns: repeat(3, 1fr); /* Start with 3 columns */
+  grid-gap: 35px; /* Space between cards */
+  justify-content: center;
+  align-content: start;
+
+  @media (min-width: 601px) and (max-width: 1000px) {
+    grid-template-columns: repeat(2, 1fr); /* Adjust for 2 columns */
+  }
+
+  /* This media query seems to be redundant because it sets the same values as outside of any media query.
+     Consider removing or adjusting it if you want different styles for other screen sizes. */
+
+
+  @media (max-width: 601px) {
+    width: 100vw; /* Keep 80vw width for larger screens */
+    height: 100vh;
+    grid-template-columns: repeat(1, 1fr); /* Adjust back to 3 columns */
+    border-radius: 0;
+    padding: 50px;
   }
 `;
 
 export const RecipeCard = styled.div`
-  margin-bottom: 20px;
   background-color: rgba(0, 0, 0, 0.7);
   padding: 15px;
   border-radius: 8px;
+  display: flex;
+  flex-direction: column;
 `;
 
 export const RecipeImage = styled.img`
@@ -34,6 +76,7 @@ export const RecipeImage = styled.img`
 export const RecipeTitle = styled.h2`
   font-weight: bold;
   color: #F8F03A;
+  margin: 10px 0;
 `;
 
 export const RecipeDescription = styled.p`
@@ -62,6 +105,6 @@ export const CloseButton = styled.button`
   cursor: pointer;
   font-size: 16px;
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 20px;
+  right: 20px;
 `;

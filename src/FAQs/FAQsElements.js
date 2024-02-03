@@ -165,8 +165,8 @@ export const Wrapper = styled.div`
   left: 50%;
   color: #000;
   transform: translateX(-50%);
-position: fixed;
-overflow: scroll;
+  position: fixed;
+  overflow: scroll;
   //height: 600px;
   width: 700px;
   //animation: ${gradientAnimation} 60s ease infinite;

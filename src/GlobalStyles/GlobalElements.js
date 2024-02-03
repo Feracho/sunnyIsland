@@ -34,6 +34,7 @@ export const Circle = styled.div`
   box-shadow: 1px 1px 1px #565656;
   position: relative;
   transition: all .2s;
+  transform: scale(0.7);
 
   &:hover {
     cursor: pointer;
@@ -66,9 +67,9 @@ export const Circle = styled.div`
 export const ExitContainer = styled(motion.div)`
     position: absolute;
 
-    right: 2.5%;
+    right: 1%;
     transition: transform 30ms ease-in-out;
-    top: 2.5%;
+    top: 1%;
     cursor: pointer;
     transform-origin: center;
     display: flex;

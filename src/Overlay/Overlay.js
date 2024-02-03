@@ -25,6 +25,7 @@ import {
   FollowUsIcon,
   FollowUsIconContainer,
   FollowUsText,
+  IconContainerWrap,
   InspectBottleButton,
   InstagramIcon,
   Logo,
@@ -88,20 +89,41 @@ export function Overlay({inspectMode, flameOn, setFlameOn, setInspectMode, toggl
           <ShopContainer>SHOP</ShopContainer>
           <OurStoryButton onClick={() => setShowOurStory(true)}>Our Story</OurStoryButton>
           <RecipesButton onClick={() => setShowRecipes(true)}>Recipes</RecipesButton>
+          <IconContainerWrap>
+                {/* FAQ Icon */}
+                <FAQIconContainer onClick={() => setShowFAQ(true)}>
+                  <FAQIcon />
+                  <FAQText>FAQs</FAQText>
+                </FAQIconContainer>
+
+                {/* Contact Icon */}
           
-          {/* FAQ Icon */}
-          <FAQIconContainer onClick={() => setShowFAQ(true)}>
-            <FAQIcon />
-            <FAQText>FAQs</FAQText>
-          </FAQIconContainer>
+                <ContactIconContainer onClick={() => setShowContactPopup(true)}>
+                  <ContactIcon />
+                  <ContactText>CONTACT</ContactText>
+                </ContactIconContainer>
 
-          {/* Contact Icon */}
-    
-         <ContactIconContainer onClick={() => setShowContactPopup(true)}>
-        <ContactIcon />
-        <ContactText>CONTACT</ContactText>
-      </ContactIconContainer>
+                {/* Follow Us Icon */}
+                <FollowUsIconContainer onClick={() => setShowSocialPopup(true)}>
+                  <FollowUsIcon />
+                  <FollowUsText>FOLLOW US!</FollowUsText>
+               </FollowUsIconContainer>
+       </IconContainerWrap>
 
+        </>
+
+        
+      )}
+      
+
+      {showSocialPopup && (
+        <SocialMediaPopup ref={popupRef}>
+          <InstagramIcon onClick={() => handleSocialIconClick('https://instagram.com')}/>
+          <FacebookIcon onClick={() => handleSocialIconClick('https://facebook.com')}/>
+          <TikTokIcon onClick={() => handleSocialIconClick('https://tiktok.com')}/>
+          <YouTubeIcon onClick={() => handleSocialIconClick('https://youtube.com')}/>
+        </SocialMediaPopup>
+      )}
       {/* Contact Popup */}
       {showContactPopup && (
         <ContactPopup>
@@ -121,23 +143,6 @@ export function Overlay({inspectMode, flameOn, setFlameOn, setInspectMode, toggl
         </ContactPopup>
       )}
 
-          {/* Follow Us Icon */}
-          <FollowUsIconContainer onClick={() => setShowSocialPopup(true)}>
-        <FollowUsIcon />
-        <FollowUsText>FOLLOW US!</FollowUsText>
-      </FollowUsIconContainer>
-        </>
-
-        
-      )}
-      {showSocialPopup && (
-        <SocialMediaPopup ref={popupRef}>
-          <InstagramIcon onClick={() => handleSocialIconClick('https://instagram.com')}/>
-          <FacebookIcon onClick={() => handleSocialIconClick('https://facebook.com')}/>
-          <TikTokIcon onClick={() => handleSocialIconClick('https://tiktok.com')}/>
-          <YouTubeIcon onClick={() => handleSocialIconClick('https://youtube.com')}/>
-        </SocialMediaPopup>
-      )}
       <InspectBottleButton onClick={handleInspectClick}>
         INSPECT SAUCE! <SearchIcon />
       </InspectBottleButton>
