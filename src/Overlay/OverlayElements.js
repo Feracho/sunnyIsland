@@ -148,7 +148,8 @@ export const OurStoryButton = styled(Button)`
 export const RecipesButton = styled(Button)`
   left: calc(3% + 100px); /* Adjust based on button width */
   @media (max-width: 600px) {
-    left: calc(61.5% + 100px); /* Adjust based on button width */
+    left: unset; /* Reset left alignment */
+    right: 3%; /* Align button to the right with 3% spacing */
   }
 `;
 
