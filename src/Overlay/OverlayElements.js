@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import { FaFacebookF, FaInstagram, FaQuestionCircle, FaTiktok, FaYoutube } from "react-icons/fa"; // Import FAQ icon
 import { IoIosCart, IoIosMail, IoIosPeople, IoIosSearch } from "react-icons/io"; // Import additional icons
 import styled from 'styled-components';
@@ -49,12 +50,14 @@ export const LogoContainer = styled.div`
   width: 80px;
   height: 100px;
   cursor: pointer;
+  transition: box-shadow 0.3s ease-in-out; // Smooth transition for the glow effect
+
+
 
   &:hover span {
     color: #DA1A35;
   }
 `;
-
 
 export const FlameText = styled.span`
   display: block;
@@ -68,42 +71,94 @@ export const FlameText = styled.span`
   ${({ flameOn }) => flameOn && `color: #DA1A35;`}
 `;
 
-// Shopping Cart Container
-export const ShoppingCartContainer = styled.div`
-  position: absolute;
-  top: 3%;
-  right: 1%;
-  width: 50px;
-  height: 50px;
-  background: white;
-  border: 5px solid black;
+export const ComingSoonContainer = styled(motion.div)`
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50vw;
+  height: 30vh;
+  background-color: white;
+  color: black;
   display: flex;
-  align-items: center;
-  cursor: pointer;
   justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+  font-size: 2rem;
+  padding: 20px;
+  box-sizing: border-box;
+
   @media (max-width: 600px) {
-    transform: scale(0.7);
+    width: 100vw;
+    height: 100vh;
+    border-radius: 0;
   }
 `;
 
-export const ShoppingCartIcon = styled(IoIosCart)`
-  font-size: 24px;
-`;
+// Assuming Circle, ExitContainer, and Line are defined elsewhere in your GlobalStyles
 
-// Shop Container
-export const ShopContainer = styled.div`
+// Combined Shopping Container
+export const ShoppingContainer = styled.div`
   position: absolute;
-  width: 75px;
-  height: 50px;
   top: 3%;
-  right: 6%; /* Adjust based on ShoppingCartContainer width and desired spacing */
-  padding: 10px;
+  right: 1%;
+  width: 120px; // Adjust width to fit both SHOP and icon
+  height: 50px;
   background: white;
   border: 5px solid black;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between; // Use space-between to separate shop and cart icon
   cursor: pointer;
+  @media (max-width: 600px) {
+    transform: scale(0.7);
+    top: 8%;
+  }
+`;
+
+// Individual Shop Button
+export const ShopButton = styled.div`
+  flex: 2; // Occupies 75% of the space
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  position: relative; // Relative positioning to place pseudo-element
+
+  // Pseudo-element for right border
+  &::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%); // Center vertically
+    width: 2px; // Width of the border
+    height: 70%; // Half the height of the container
+    background-color: black;
+  }
+  &:hover {
+    box-shadow: 0 0 8px 2px rgba(255, 255, 255, 0.6); // Adjust the color and size as needed
+  }
+`;
+
+// Individual Shopping Cart Button
+export const ShoppingCartButton = styled.div`
+  flex: 1; // Occupies 25% of the space
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  &:hover {
+    box-shadow: 0 0 8px 2px rgba(255, 255, 255, 0.6); // Adjust the color and size as needed
+  }
+`;
+
+// Shopping Cart Icon
+export const ShoppingCartIcon = styled(IoIosCart)`
+  font-size: 24px;
+
 `;
 
 // Button
@@ -114,6 +169,9 @@ export const Button = styled.div`
   padding: 10px;
   color: white;
   cursor: pointer;
+  &:hover {
+    box-shadow: 0 0 8px 2px rgba(255, 255, 255, 0.6); // Adjust the color and size as needed
+  }
   @media (max-width: 600px) {
     transform: scale(0.7);
   }
@@ -134,6 +192,7 @@ export const InspectBottleButton = styled(Button)`
 export const TogglePeppersButton = styled(Button)`
   // Styles for the button
   left: 11.75%;
+  
 `;
 
 export const EnableLightsButton = styled(Button)`
@@ -195,10 +254,11 @@ export const FAQIconContainer = styled.div`
   cursor: pointer;
   transition: transform 0.2s ease-in-out, opacity 0.2s ease; // Smooth transition for hover effect
   z-index: 99999;
-&:hover {
+
+  &:hover > * {
   transform: scale(1.02); // Slightly increase size when hovered
-  opacity: 0.8; // Reduce opacity when hovered
-}
+  box-shadow: 0 0 8px 2px rgba(255, 255, 255, 0.6); 
+  }
 
 
   @media (max-width: 600px) {
@@ -235,10 +295,10 @@ export const ContactIconContainer = styled.div`
   cursor: pointer;
   transition: transform 0.2s ease-in-out, opacity 0.2s ease; // Smooth transition for hover effect
   z-index: 99999;
-&:hover {
+  &:hover > * {
   transform: scale(1.02); // Slightly increase size when hovered
-  opacity: 0.8; // Reduce opacity when hovered
-}
+  box-shadow: 0 0 8px 2px rgba(255, 255, 255, 0.6); 
+  }
 
 
   @media (max-width: 600px) {
@@ -276,10 +336,12 @@ export const FollowUsIconContainer = styled.div`
   cursor: pointer;
   transition: transform 0.2s ease-in-out, opacity 0.2s ease; // Smooth transition for hover effect
   z-index: 99999;
-&:hover {
+  &:hover > * {
   transform: scale(1.02); // Slightly increase size when hovered
-  opacity: 0.8; // Reduce opacity when hovered
-}
+  box-shadow: 0 0 8px 2px rgba(255, 255, 255, 0.6); 
+  
+  }
+
 
 @media (max-width: 600px) {
   bottom: 70%;
@@ -293,6 +355,7 @@ export const FollowUsIcon = styled(IoIosPeople)`
   border-radius: 100%;
   background-color: #fff;
   padding: 2px;
+  
 
 
 `;

@@ -7,9 +7,8 @@ import {
   AccordionTitle,
   AccordionWrapper,
   Button,
-
   Container,
-  FAQContainer,
+  FAQContainer
 } from './FAQsElements';
 const FAQ = ({isDarkMode, setShowFAQ, showFAQ, onClose}) => {
   const [expandedItem, setExpandedItem] = useState(null);
@@ -19,10 +18,12 @@ const FAQ = ({isDarkMode, setShowFAQ, showFAQ, onClose}) => {
   };
 
   return (
+
+
     <FAQContainer isDarkMode={isDarkMode} initial={{ opacity: 0 }}
       animate={{ opacity: 1, transition: { duration: 1 } }}
       exit={{ opacity: 0, transition: { duration: 1 } }}>
-      <ExitContainer className='close-btn'  onClick={onClose}>
+            <ExitContainer className='close-btn'  onClick={onClose}>
       <Circle>
           <Line className="one" />
           <Line className="two" />
@@ -57,6 +58,7 @@ const FAQ = ({isDarkMode, setShowFAQ, showFAQ, onClose}) => {
         </AccordionContainer>
       </Container>
     </FAQContainer>
+  
   );
 };
 

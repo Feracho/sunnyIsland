@@ -2,16 +2,33 @@ import { motion } from 'framer-motion';
 import styled from 'styled-components';
 
 
+export const RecipesContainerWrap =  styled.div`
+  position: fixed;
+  left: 50%;
+  top: 50%; /* Adjust to 50% to center vertically as well */
+  transform: translate(-50%, -50%); /* Adjust for both X and Y axis */
+  width: 90vw;
+  height: 90vh;
+overflow: hidden;
+
+`
 export const RecipesContainer =  styled.div`
   position: fixed;
   left: 50%;
   top: 50%; /* Adjust to 50% to center vertically as well */
   transform: translate(-50%, -50%); /* Adjust for both X and Y axis */
-  width: 80vw;
+  width: 90vw;
   height: 90vh;
   background: linear-gradient(135deg, #000000, #DA1A35, #000000);
   overflow-y: scroll; /* Keep this for vertical scrolling */
+  // Hide scrollbar for Chrome, Safari, and Opera
+  &::-webkit-scrollbar {
+    display: none;
+  }
 
+  // Hide scrollbar for IE, Edge, and Firefox
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
   box-sizing: border-box;
   z-index: 100;
   border-radius: 30px;

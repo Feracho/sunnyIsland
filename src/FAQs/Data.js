@@ -11,10 +11,7 @@ const faqData = [
           question: "Are there any plans to expand your product range?",
           answer: "Yes, we are constantly exploring new flavors and products. Keep an eye on our website and social media for announcements about new releases."
         },
-        {
-          question: "What allergens are in your products?",
-          answer: "All products manufactured by Garner Foods® are labeled as required by law to indicate the presence or potential presence of any of the 'Big Nine' allergens. Our main Sunny Island Pepper Sauce contains none of these 9 allergens."
-        },
+ 
         {
           question: "What size bottles will you guys offer?",
           answer: "Currently, our bottles for storing sauces are 8oz."
@@ -47,6 +44,23 @@ const faqData = [
       ]
     },
     {
+    header: "Dietary & Allergy Information",
+    questions: [
+      {
+        question: "What allergens are in your products?",
+        answer: "Our main Sunny Island Pepper Sauce contains none of the 'Big Nine' allergens."
+      },
+      {
+        question: "Is the sauce vegan and gluten-free?",
+        answer: "Yes, our Sunny Island Pepper Sauce is both vegan and gluten-free, accommodating a wide range of dietary preferences."
+      },
+      {
+        question: "How should I address concerns about specific ingredients or allergies?",
+        answer: "We understand the importance of dietary restrictions and allergies. For any specific concerns or questions about our ingredients, please reach out to our customer service team. We're here to ensure you can enjoy our products with peace of mind."
+      }
+    ]
+  },
+    {
       header: "Brand and Mission",
       questions: [
         {
@@ -73,6 +87,10 @@ const faqData = [
         {
           question: "Will you guys have shipping available?",
           answer: "Yes. As soon as we are licensed, shipping will become available all across the states."
+        },
+        {
+          question: "What should I do if I have allergy concerns?",
+          answer: "Please contact us directly for any allergy concerns. Our customer service team will be happy to assist you."
         },
         {
           question: "What should I do if I have allergy concerns?",

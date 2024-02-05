@@ -9,21 +9,25 @@ import {
   RecipeLink,
   RecipeTitle,
   RecipesContainer,
+  RecipesContainerWrap,
   RecipesWrap
 } from './RecipesElements'; // Adjust the path as necessary
 export function Recipes({ isOpen, onClose }) {
   return (
-    <RecipesContainer
-
-  >
-    <RecipesWrap
-    >
-      <ExitContainer className='close-btn'  onClick={onClose}>
+    <RecipesContainerWrap >
+           <ExitContainer className='close-btn'  onClick={onClose}>
       <Circle>
           <Line className="one" />
           <Line className="two" />
         </Circle>
       </ExitContainer>
+    <RecipesContainer
+
+  >
+
+    <RecipesWrap
+    >
+ 
       {recipes.map(recipe => (
         <RecipeCard key={recipe.id}>
           <RecipeImage src={recipe.imageUrl} alt={recipe.title} />
@@ -34,5 +38,6 @@ export function Recipes({ isOpen, onClose }) {
       ))}
     </RecipesWrap>
     </RecipesContainer>
+    </RecipesContainerWrap>
   );
 }

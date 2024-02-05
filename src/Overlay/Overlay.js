@@ -4,6 +4,7 @@ import FAQ from '../FAQs/FAQs';
 import { OurStory } from '../OurStory/Story';
 import { Recipes } from '../Recipes/Recipes';
 import logo from '../media/SunnyIslandLogo.png';
+import ComingSoonPopup from './ComingSoon';
 import {
   ContactCaption,
   ContactFormContainer,
@@ -34,9 +35,10 @@ import {
   RecipesButton,
   SearchIcon,
   SendButton,
-  ShopContainer,
-  ShoppingCartContainer,
+  ShopButton,
+  ShoppingCartButton,
   ShoppingCartIcon,
+  ShoppingContainer,
   SocialMediaPopup,
   TikTokIcon,
   TogglePeppersButton,
@@ -49,7 +51,7 @@ export function Overlay({inspectMode, flameOn, setFlameOn, setInspectMode, toggl
   const [showFAQ, setShowFAQ] = useState(false);
   const [showSocialPopup, setShowSocialPopup] = useState(false);
   const [showContactPopup, setShowContactPopup] = useState(false);
-
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
   const popupRef = useRef(null);
 
   useEffect(() => {
@@ -75,18 +77,30 @@ export function Overlay({inspectMode, flameOn, setFlameOn, setInspectMode, toggl
     toggleFlame();
     setFlameOn(!flameOn); // Toggle flameOn state
   };
+//pop up
+
+
+  const handleOpenPopup = () => {
+    setIsPopupOpen(true);
+  };
+
+  const handleClosePopup = () => {
+    setIsPopupOpen(false);
+  };
   return (
-    <>
+    <div id="overlay">
       {!inspectMode && (
         <>
           <LogoContainer onClick={handleFlameClick}>
             <Logo src={logo} />
             <FlameText flameOn={flameOn}>FLAME ON</FlameText>
           </LogoContainer>
-          <ShoppingCartContainer>
-            <ShoppingCartIcon />
-          </ShoppingCartContainer>
-          <ShopContainer>SHOP</ShopContainer>
+          <ShoppingContainer onClick={handleOpenPopup}>
+            <ShopButton>SHOP</ShopButton>
+            <ShoppingCartButton>
+              <ShoppingCartIcon />
+            </ShoppingCartButton>
+          </ShoppingContainer>
           <OurStoryButton onClick={() => setShowOurStory(true)}>Our Story</OurStoryButton>
           <RecipesButton onClick={() => setShowRecipes(true)}>Recipes</RecipesButton>
           <IconContainerWrap>
@@ -157,6 +171,7 @@ export function Overlay({inspectMode, flameOn, setFlameOn, setInspectMode, toggl
       {showOurStory && <OurStory isOpen={showOurStory} onClose={() => setShowOurStory(false)} />}
       {showRecipes && <Recipes isOpen={showRecipes} onClose={() => setShowRecipes(false)} />}
       {showFAQ && <FAQ isOpen={showFAQ} onClose={() => setShowFAQ(false)} />}
-    </>
+      {isPopupOpen && <ComingSoonPopup isOpen={isPopupOpen} onClose={handleClosePopup} />}
+    </div>
   );
 }

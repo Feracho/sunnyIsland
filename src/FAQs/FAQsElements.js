@@ -4,13 +4,14 @@ import { MdCancel } from 'react-icons/md';
 
 import styled, { keyframes } from 'styled-components';
 
+
 export const FAQContainer = styled(motion.div)`
   box-sizing: border-box;
   position: fixed;
   width: 800px;
   height: 600px;
   border-radius: 20px;
-  overflow: scroll;
+  overflow: hidden;
   left: 50%;
   transform: translateX(-50%);
   top: 15%;
@@ -274,7 +275,6 @@ color: black;
 
 
 
-///Relocate 
 
 export const Container = styled.div`
   margin: 0 auto;
@@ -282,7 +282,19 @@ export const Container = styled.div`
   padding: 3rem;
   width: 48vw;
   height: 100vh;
-  color: ${({ isDarkMode }) => (isDarkMode ? '#000' : '#fff')};
+  overflow: scroll;
+  color: ${({ isDarkMode }) => (isDarkMode ? '#000' : '#000')};
+  ;
+
+  // Hide scrollbar for Chrome, Safari, and Opera
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  // Hide scrollbar for IE, Edge, and Firefox
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+
   h2 {
     font-size: 2.5em; // Adjust the font size as needed
     font-weight: 900; // Bold weight
@@ -349,10 +361,13 @@ export const Button = styled.button`
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
+
   }
 
   &::after {
     content: '${props => (props.expanded ? '-' : '+')}';
+    color: white;
+ 
     position: absolute;
     right: 10px;
     top: 50%;

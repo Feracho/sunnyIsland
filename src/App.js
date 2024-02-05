@@ -1,4 +1,4 @@
-import { Physics, useBox } from '@react-three/cannon';
+import { useBox } from '@react-three/cannon';
 import {
   AccumulativeShadows,
   CubeCamera,
@@ -12,12 +12,14 @@ import {
 import { Canvas, extend, useFrame, useLoader, useThree } from '@react-three/fiber';
 import glsl from 'babel-plugin-glsl/macro';
 import { easing } from 'maath';
-import { useLayoutEffect, useMemo, useRef, useState } from 'react';
+import { Suspense, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import * as THREE from 'three';
+import './App.css';
 import PepperSauce from './Models/PepperSauce';
 import Peppers from './Models/Peppers';
 import Logo from './Models/SunnyIslandLogo';
 import { Overlay } from './Overlay/Overlay';
+import Preloader from './Preloader/Preloader';
 const innerMaterial = new THREE.MeshStandardMaterial({
   transparent: true,
   opacity: 1,
@@ -44,8 +46,30 @@ function PhysicsPepperSauce() {
   );
 }
 export default function App() {
-  const [perfSucks, degrade] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Placeholder for your loading logic
+    // Set isLoading to false when you're sure all components have loaded
+    // For demonstration, using a timeout
+    const timer = setTimeout(() => setIsLoading(false), 3000); // Assume everything loads in 3 seconds
+
+    return () => clearTimeout(timer);
+  }, []);
   const [inspectMode, setInspectMode] = useState(false);
+  // Other state initialization
+  const overlay = document.getElementById('overlay');
+
+  if (overlay) {
+    overlay.classList.remove('hidden'); // Make the overlay visible
+  }
+  // Function to call when loading is complete
+  // Handle loading completion
+  const handleLoaded = () => {
+    setLoading(false); // Set loading to false when content is ready
+  };
+  const [perfSucks, degrade] = useState(false);
   // Reduced number of instances for performance
   const redPepperCount = perfSucks ? 5 : 10;
   const yellowPepperCount = perfSucks ? 10 : 30;
@@ -74,7 +98,8 @@ export default function App() {
       eventPrefix="client"
       
       camera={{ position: [20, 0.9, 20], fov: 26 }} >
-         <Physics>
+
+<Suspense fallback={<Preloader onLoaded={handleLoaded} />}>
       <group position={[0,0,-5]}>
             {showPeppers && (
           <>
@@ -107,22 +132,25 @@ export default function App() {
              {flameOn &&<> <Fire color="red" position={[0.5, 1.5, 0]} scale={10} />      <FlickeringLight position={[0, 1, 0]} /> </>}
       
       </group>
-        <PepperSauce />
+        <PepperSauce onLoaded={() => setLoading(true)} />
  
 
         <AccumulativeShadows frames={100} alphaTest={0.85} opacity={0.8} color="red" scale={20} position={[0, -0.005, 0]}>
           <RandomizedLight amount={8} radius={6} ambient={0.5} intensity={10} position={[-1.5, 2.5, -2.5]} bias={0.001} />
         </AccumulativeShadows>
       </group>
-      </Physics>
+      
       <Env perfSucks={perfSucks} />
 
 
       {showEffectComposer && (
  <></>
         )}
+        </Suspense>
     </Canvas>
-    <Overlay  
+
+            <Overlay
+id="overlay" className={isLoading ? 'hidden' : ''}
     flameOn = {flameOn}
     setFlameOn={setFlameOn}
     inspectMode={inspectMode}

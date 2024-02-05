@@ -65,7 +65,7 @@ export const Circle = styled.div`
 
 
 export const ExitContainer = styled(motion.div)`
-    position: absolute;
+    position: fixed;
 
     right: 1%;
     transition: transform 30ms ease-in-out;

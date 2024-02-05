@@ -5,6 +5,7 @@ import storyData from './Data';
 import {
   BulletPoint,
   OurStoryContainer,
+  OurStoryContainerWrapper,
   StoryDescription,
   StoryHeader,
   StoryImage,
@@ -15,17 +16,19 @@ import {
 
 export function OurStory({ isOpen, onClose }) {
   return (
-    <OurStoryContainer
-      initial={{ x: '-100%' }}
-      animate={isOpen ? { x: 0 } : { x: '-100%' }}
-      transition={{ type: 'spring', stiffness: 100 }}
-    >
-          <ExitContainer className='close-btn'  onClick={onClose}>
+    <OurStoryContainerWrapper>
+              <ExitContainer className='close-btn'  onClick={onClose}>
       <Circle>
           <Line className="one" />
           <Line className="two" />
         </Circle>
       </ExitContainer>
+    <OurStoryContainer
+      initial={{ x: '-100%' }}
+      animate={isOpen ? { x: 0 } : { x: '-100%' }}
+      transition={{ type: 'spring', stiffness: 100 }}
+    >
+
       {storyData.map((item, index) => (
         <StorySection key={index}>
         <StoryImage 
@@ -47,5 +50,6 @@ export function OurStory({ isOpen, onClose }) {
         </StorySection>
       ))}
     </OurStoryContainer>
+    </OurStoryContainerWrapper>
   );
 }
