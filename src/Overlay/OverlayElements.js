@@ -466,13 +466,40 @@ export const YouTubeIcon = styled(FaYoutube)`
 //Contact Form Elements:
 
 
+
+
+export const ContactImage = styled.img`
+  width: 100%;
+  border-radius: 8px;
+`;
+
+export const ContactCaption = styled.span`
+  margin-top: 10px;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #eee;
+`;
+
+
+
+
+export const ContactFormHeader = styled.h2`
+  margin-bottom: 20px;
+  color: #fff;
+  font-weight: 900;
+  text-transform: uppercase;
+`;
+
+
+
 export const ContactPopup = styled.div`
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 70vw;
-  height: 55vh;
+  height: auto; // Adjusted to auto to accommodate the content's height
   background: linear-gradient(
     135deg,
     #ffd701, 
@@ -497,9 +524,19 @@ export const ContactPopup = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-around;
+  flex-direction: row; // Default to row for wider screens
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
-  z-index: 1000; // Ensure it's above other elements
+  z-index: 1000;
   padding: 20px;
+  overflow: hidden; // Manage the content inside the popup
+
+  @media (max-width: 600px) {
+    width: 90vw;
+    transform: translate(-50%, -50%) scale(0.9);
+    flex-direction: column; // Switch to column layout for screens 600px or less
+    justify-content: center; // Adjust alignment for column layout
+    height: auto; // Adjust height to fit content
+  }
 `;
 
 export const ContactImageContainer = styled.div`
@@ -507,36 +544,25 @@ export const ContactImageContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-`;
 
-export const ContactImage = styled.img`
-  width: 100%;
-  border-radius: 8px;
-`;
-
-export const ContactCaption = styled.span`
-  margin-top: 10px;
-  font-size: 12px;
-  font-weight: bold;
-  text-transform: uppercase;
-  color: #eee;
+  @media (max-width: 600px) {
+    width: 80%; // Adjust width for smaller screens to improve visibility
+  }
 `;
 
 export const ContactFormContainer = styled.div`
-
   width: 35%;
-  margin-right: 5%;
+  @media (max-width: 600px) {
+    width: 80%; // Adjust width for smaller screens
+    margin-top: 20px; // Add some space between the image and the form
+  }
 `;
 
-export const ContactFormHeader = styled.h2`
-  margin-bottom: 20px;
-  color: #fff;
-  font-weight: 900;
-  text-transform: uppercase;
-`;
-
+// The ContactInput, ContactTextarea, and SendButton components
+// should remain largely unchanged, but ensure their widths are flexible
+// to adapt to their container's width adjustments.
 export const ContactInput = styled.input`
-  width: 30vw;
+  width: 100%; // Ensure it adapts to container width
   padding: 10px;
   margin-bottom: 10px;
   border: 1px solid #ccc;
@@ -544,7 +570,7 @@ export const ContactInput = styled.input`
 `;
 
 export const ContactTextarea = styled.textarea`
-  width: 30vw;
+  width: 100%; // Ensure it adapts to container width
   padding: 10px;
   margin-bottom: 20px;
   border: 1px solid #ccc;
@@ -553,7 +579,7 @@ export const ContactTextarea = styled.textarea`
 `;
 
 export const SendButton = styled.button`
-  width: 30vw;
+  width: 100%; // Ensure it adapts to container width
   padding: 10px;
   border: none;
   background-color: #000;

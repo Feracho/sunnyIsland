@@ -33,23 +33,13 @@ export const FAQContainer = styled(motion.div)`
     rgba(186, 3, 29, 0.2) 100%
   ), #fff;
 
-  @media screen and (max-width: 1200px) {
-    zoom: 0.9;
-  }
-  @media screen and (max-width: 960px) {
-    zoom: 0.8;
-    width: 700px;
-  }
-  @media screen and (max-width: 768px) {
-    top: 25%;
-    zoom: 0.7;
-  }
-  @media screen and (max-width: 550px) {
-    zoom: 0.65;
-    width: 650px;
-  }
-  @media screen and (max-width: 550px) {
-    zoom: 0.6;
+
+ 
+  @media screen and (max-width: 600px) {
+    top: 5%;
+    width: 95vw;
+  height: 90vh;
+  //border-radius: unset;
   }
 `;
 
@@ -61,59 +51,7 @@ const gradientAnimation = keyframes`
   100% { background-position: 0% 50%; }
 `;
 
-export const PopUpContainer = styled(motion.div)`
-    box-sizing: border-box;
-    position: fixed;
-    width: 800px;
-    height: 600px;
-    border-radius: 20px;
-    overflow: scroll;
-    left: 50%;
-    transform: translateX(-50%);
-    top: 15%;
-    z-index: 99999999;
-   // backdrop-filter: blur(10px);
-    //border-radius: 70%;
-    box-sizing: border-box;
-    box-shadow: 10px 0px 20px 0px rgba(0, 0, 0, 0.2);
 
-   // background-color: #fff;
-   // background: rgb(239,238,255);
-    background: radial-gradient(circle at 24.1% 68.8%, rgb(50, 50, 50) 0%, rgb(0, 0, 0) 99.4%);
-      background: -o-radial-gradient(circle at 24.1% 68.8%, rgb(50, 50, 50) 0%, rgb(0, 0, 0) 99.4%);
-      background: -webkit-radial-gradient(circle at 24.1% 68.8%, rgb(50, 50, 50) 0%, rgb(0, 0, 0) 99.4%);
-
-   background: ${({ isDarkMode }) => (isDarkMode ? 'radial-gradient(circle at 24.1% 68.8%, rgb(50, 50, 50) 0%, rgb(0, 0, 0) 99.4%)' : 'linear-gradient(90deg, rgba(239,238,255,1) 0%, rgba(234,234,255,1) 35%, rgba(255,255,255,1) 100%)')};
-   //color: ${({ isDarkMode }) => (isDarkMode ? '#fff' : '#000')};
-@media screen and (max-width: 1200px) {
-       zoom: 0.9;
-  
-  
-
-    }
-    @media screen and (max-width: 960px) {
-       zoom: 0.8;
-       width: 700px;
-    }
-
-    @media screen and (max-width: 768px) {
- 
-      top: 25%;
-        zoom: 0.7;
-         }
-
-    @media screen and (max-width: 550px) {
-       zoom: 0.65;
-  
-       width: 650px;
-
-    }
-    @media screen and (max-width: 550px) {
-       zoom: 0.6;
-  
-    }
-
-`
 
 
 
@@ -176,6 +114,7 @@ export const Wrapper = styled.div`
   align-items: center;
   padding: 1em;
   z-index: 99999999;
+  
    // Hide scrollbar for Webkit browsers
    &::-webkit-scrollbar {
     display: none;
@@ -280,9 +219,12 @@ export const Container = styled.div`
   margin: 0 auto;
   margin-top: 0px;
   padding: 3rem;
-  width: 48vw;
+
+  width: 90%;
   height: 100vh;
   overflow: scroll;
+  position: relative;
+ bottom: 20%;
   color: ${({ isDarkMode }) => (isDarkMode ? '#000' : '#000')};
   ;
 
@@ -298,7 +240,8 @@ export const Container = styled.div`
   h2 {
     font-size: 2.5em; // Adjust the font size as needed
     font-weight: 900; // Bold weight
-    margin-bottom: 1em; // Space at the bottom of h2
+    margin-bottom: 0.25em; // Space at the bottom of h2
+    margin-top: 3em; // Space at the bottom of h2
   }
 
   h3 {
@@ -306,6 +249,9 @@ export const Container = styled.div`
     font-weight: bold; // Bold weight
     margin-top: 5em; // Space at the top of h3
     
+  }
+  @media screen and (max-width: 600px) {
+    width: 100vw;
   }
 `;
 
@@ -317,6 +263,7 @@ export const AccordionWrapper = styled.div`
   background-color: rgba(0, 0, 0, 0.7);
   padding: 15px;
   border-radius: 8px;
+
   &:last-child {
     border-bottom: none;
     
@@ -340,7 +287,7 @@ export const Button = styled.button`
 
   -webkit-background-clip: text;
   background-clip: text;
-  color: transparent; /* Make the text color transparent so the gradient shows through */
+  //color: transparent; /* Make the text color transparent so the gradient shows through */
 
   &:hover,
   &:focus {
@@ -360,7 +307,7 @@ export const Button = styled.button`
   );
     -webkit-background-clip: text;
     background-clip: text;
-    color: transparent;
+    //color: transparent;
 
   }
 
@@ -373,11 +320,58 @@ export const Button = styled.button`
     top: 50%;
     transform: translateY(-50%);
   }
+  
 `;
 
 export const AccordionTitle = styled.span`
-  padding: 1em 1.5em 1em 0;
+  transition: all 0.3s ease-in-out; // Smooth transition for the hover effect
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.4); // Faux outline effect
+  /* Default text color when not hovered */
+  color: ${({ hover }) => hover ? 'transparent' : '#ffffff'};
+  background: ${({ hover }) => hover ? `linear-gradient(
+    90deg,
+    rgba(255, 215, 1, 1) 0%, 
+    rgba(255, 205, 1, 1) 10%, 
+    rgba(255, 193, 0, 1) 20%, 
+    rgba(250, 144, 6, 1) 30%, 
+    rgba(244, 93, 0, 1) 40%, 
+    rgba(246, 93, 2, 1) 50%, 
+    rgba(253, 110, 16, 1) 60%, 
+    rgba(255, 70, 13, 1) 70%, 
+    rgba(223, 9, 22, 1) 80%, 
+    rgba(196, 2, 28, 1) 90%, 
+    rgba(186, 3, 29, 1) 100%
+  )` : 'none'};
+  -webkit-background-clip: ${({ hover }) => hover ? 'text' : 'none'};
+  background-clip: ${({ hover }) => hover ? 'text' : 'none'};
+  -webkit-text-fill-color: ${({ hover }) => hover ? 'transparent' : 'none'};
+  color: ${({ hover }) => hover ? 'fff' : '#ffffff'}; /* Ensures text is white when not hovered */
+
+  &:hover {
+    background: linear-gradient(
+      90deg,
+      rgba(255, 215, 1, 1) 0%, 
+      rgba(255, 205, 1, 1) 10%, 
+      rgba(255, 193, 0, 1) 20%, 
+      rgba(250, 144, 6, 1) 30%, 
+      rgba(244, 93, 0, 1) 40%, 
+      rgba(246, 93, 2, 1) 50%, 
+      rgba(253, 110, 16, 1) 60%, 
+      rgba(255, 70, 13, 1) 70%, 
+      rgba(223, 9, 22, 1) 80%, 
+      rgba(196, 2, 28, 1) 90%, 
+      rgba(186, 3, 29, 1) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
 `;
+
+
+// Adjust the Button's ::after pseudo-element similarly, if possible, or manage through JavaScript.
+
 
 export const Icon = styled.span`
   display: inline-block;
@@ -417,6 +411,7 @@ export const AccordionContent = styled.div`
   max-height: ${(props) => (props.expanded ? '100%' : '0')};
   margin-bottom: ${(props) => (props.expanded ? '25px' : '0')};
   overflow: hidden;
+  color: #fff;
   transition: all 200ms linear;
   will-change: opacity, max-height;
   flex: ${(props) => (props.expanded ? '1' : '0')}; /* Push other items when expanded */
@@ -425,6 +420,8 @@ export const AccordionContent = styled.div`
     font-size: 1rem;
     font-weight: 300;
     margin: 2em 0;
+    color: #fff;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.4); // Faux outline effect
   }
 
 `;

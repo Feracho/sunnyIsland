@@ -26,7 +26,9 @@ export const RecipesContainer =  styled.div`
   transform: translate(-50%, -50%); /* Adjust for both X and Y axis */
   width: 90vw;
   height: 90vh;
-  background: linear-gradient(135deg, #000000, #DA1A35, #000000);
+  background-color: #FAD961;
+background-image: linear-gradient(90deg, #FAD961 0%, #F76B1C 100%);
+
   overflow-y: scroll; /* Keep this for vertical scrolling */
   // Hide scrollbar for Chrome, Safari, and Opera
   &::-webkit-scrollbar {
@@ -101,16 +103,20 @@ export const RecipeTitle = styled.h2`
   font-weight: bold;
   color: #F8F03A;
   margin: 10px 0;
+  text-shadow: 1px 1px 2px rgba(255,255,255,0.5); // Faux outline effect
 `;
 
 export const RecipeDescription = styled.p`
   color: white;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.4); // Faux outline effect
 `;
 
 export const RecipeLink = styled.a`
   display: inline-block;
-  background-color: #DA1A35;
+  background-color: #F76B1C;
+
   color: #fff;
+
   padding: 10px 15px;
   margin-top: 10px;
   border-radius: 5px;

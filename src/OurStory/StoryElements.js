@@ -6,11 +6,13 @@ export const OurStoryContainerWrapper = styled.div`
   left: 50%;
   top: 50%; /* Adjust to 50% to center vertically as well */
   transform: translate(-50%, -50%); /* Adjust for both X and Y axis */
-  width: 90vw;
-  height: 90vh;
+  width: 70vw;
+  height: 85vh;
   padding: 100px;
-  background-color: #FBAB7E;
-background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);
+  background-color: #FBDA61;
+background-image: linear-gradient(45deg, #FBDA61 0%, #FF5ACD 100%);
+
+
 
   overflow: hidden; /* Keep this for vertical scrolling */
   // Hide scrollbar for Chrome, Safari, and Opera
@@ -48,8 +50,9 @@ export const OurStoryContainer = styled.div`
   width: 90vw;
   height: 90vh;
   padding: 100px;
-  background-color: #FBAB7E;
-background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);
+  background-color: #FBDA61;
+background-image: linear-gradient(45deg, #FBDA61 0%, #FF5ACD 100%);
+
 
   overflow-y: scroll; /* Keep this for vertical scrolling */
   // Hide scrollbar for Chrome, Safari, and Opera
@@ -104,6 +107,7 @@ export const StorySection = styled.div`
   display: flex;
   margin-bottom: 20px;
   align-items: center;
+  flex-direction: column;
   @media (max-width: 600px) {
     flex-direction: column; // Stack the image and text vertically on small screens
   }
@@ -121,8 +125,11 @@ export const GraphicColumn = styled.div`
 export const TextColumn = styled.div`
   flex: 1;
   padding: 10px;
+  margin-left: 40%;
+
   // Add styles for the text column
   @media (max-width: 600px) {
+    margin-left: unset;
     order: 1; // Ensure the text appears second
     padding: 0px;
     width: 85vw;
@@ -132,33 +139,52 @@ export const TextColumn = styled.div`
 export const StoryTopline = styled.h3`
   font-weight: bold;
   color: #F8F03A;
-  font-size: 16.5px;
+  font-size: 24px;
   text-transform: uppercase;
   margin-bottom: -25px;
-  // Add additional styles for topline
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.4); // Faux outline effect
+  @media (max-width: 600px) {
+    font-size: 16.5px;
+  }
+  // Additional styles for topline
 `;
 
 export const StoryHeader = styled.h2`
   font-weight: black;
   color: #F8F03A;
-  font-size: 20px;
+  font-size: 28px;
   text-transform: uppercase;
   width: 90vw;
   margin-bottom: -10px;
-  // Add additional styles for header
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5); // Soft drop shadow for depth
+  @media (max-width: 600px) {
+    font-size: 20px;
+  }
+  // Additional styles for header
 `;
 
 export const StoryDescription = styled.p`
   color: white;
-  font-size: 12.5px;
-  // Add additional styles for description
+  font-size: 20px;
+  width: 60vw;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.3); // Light drop shadow for readability
+  @media (max-width: 600px) {
+    font-size: 12.5px;
+    width: 50vw;
+  }
+  // Additional styles for description
 `;
 
 export const BulletList = styled.ul`
   list-style: none; // Remove default list styling
   padding: 0px; // Reset padding to align with custom bullets
   margin: 0; // Adjust margin as needed
-  font-size: 10.5px;
+  font-size: 16.5px;
+  margin-bottom: 150px;
+  @media (max-width: 600px) {
+    font-size: 10.5px;
+    margin-bottom: 50px;
+  }
 `;
 
 export const BulletPoint = styled.li`
@@ -167,17 +193,20 @@ export const BulletPoint = styled.li`
   background-size: 20px 20px; // Adjust size of bullet image as needed
   background-position: left center;
   padding: 2px;
-  //padding-left: 30px; // Adjust padding to ensure text does not overlap the bullet image
-  //margin-left: -5%; // Move each bullet point to the left by 5%
   color: white;
   position: relative;
-left: 10px;
-
+  left: 10px;
+  text-indent: 25px;
+  text-shadow: 0.2px 0.2px 0px #000, 
+               -0.2px 0.2px 0px #000, 
+              0.2px 0.2px 0px #000, 
+               -0.2px 0.2px 0px #000; // Faux outline for contrast against the background
+               text-shadow: 1px 1px 2px rgba(0,0,0,0.1); 
   @media (max-width: 600px) {
     padding-left: 25px; // Adjust for smaller screens if necessary
-    margin-left: 0; // Adjust margin to fit mobile layout
   }
 `;
+
 export const CloseButton = styled.button`
   background-color: transparent;
   color: white;
