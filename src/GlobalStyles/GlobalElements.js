@@ -97,7 +97,7 @@ export const ExitContainer = styled(motion.div)`
 
 
   @media (max-width: 600px) {
-    top: 4%;
+    top: 5%;
   }
 
 
