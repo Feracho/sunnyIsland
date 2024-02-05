@@ -57,6 +57,11 @@ export const LogoContainer = styled.div`
   &:hover span {
     color: #DA1A35;
   }
+  @media (max-width: 600px) {
+    transform: translate(-10px, -15px)scale(0.5);
+    top: 0%;
+    left: 0%;
+  }
 `;
 
 export const FlameText = styled.span`
@@ -91,9 +96,9 @@ export const ComingSoonContainer = styled(motion.div)`
   box-sizing: border-box;
 
   @media (max-width: 600px) {
-    width: 100vw;
-    height: 100vh;
-    border-radius: 0;
+   
+    width: 70vw;
+  height: 30vh;
   }
 `;
 
@@ -113,8 +118,9 @@ export const ShoppingContainer = styled.div`
   justify-content: space-between; // Use space-between to separate shop and cart icon
   cursor: pointer;
   @media (max-width: 600px) {
-    transform: scale(0.7);
-    top: 8%;
+    transform: translateX(15px)scale(0.6);
+    top: 1%;
+    right: 0%;
   }
 `;
 
@@ -168,23 +174,50 @@ export const Button = styled.div`
   border: 2px solid white;
   padding: 10px;
   color: white;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
   &:hover {
     box-shadow: 0 0 8px 2px rgba(255, 255, 255, 0.6); // Adjust the color and size as needed
   }
   @media (max-width: 600px) {
     transform: scale(0.7);
+    width: 100px;
+  }
+`;
+
+export const InspectButton = styled.div`
+  position: absolute;
+  bottom: 3%;
+  border: 2px solid white;
+  padding: 10px;
+  color: white;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  &:hover {
+    box-shadow: 0 0 8px 2px rgba(255, 255, 255, 0.6); // Adjust the color and size as needed
+  }
+  @media (max-width: 600px) {
+    transform: scale(0.7);
+
   }
 `;
 
 // Inspect Bottle Button
-export const InspectBottleButton = styled(Button)`
+export const InspectBottleButton = styled(InspectButton)`
   bottom: 3%;
   left: 50%;
+  font-size: 18px;
+  font-weight: 900;
   padding: 10px 15px 15px 20px;
   transform: translateX(-50%); // Center the button
   @media (max-width: 600px) {
     transform: translateX(-50%) scale(1);
+    padding: 5px 7.5px 10px 10px;
+    font-size: 16px;
   }
 `;
 
@@ -192,23 +225,36 @@ export const InspectBottleButton = styled(Button)`
 export const TogglePeppersButton = styled(Button)`
   // Styles for the button
   left: 11.75%;
+  @media (max-width: 600px) {
+    left: unset;
+    right: 3%;
+    bottom: 1%;
+  }
   
 `;
 
 export const EnableLightsButton = styled(Button)`
   // Styles for the button
   left: 3%;
+  @media (max-width: 600px) {
+
+
+    bottom: 1%;
+  }
 `;
 
 export const OurStoryButton = styled(Button)`
   left: 3%;
+  @media (max-width: 600px) {
+    left: 1.5%;
+  }
 `;
 
 export const RecipesButton = styled(Button)`
   left: calc(3% + 100px); /* Adjust based on button width */
   @media (max-width: 600px) {
     left: unset; /* Reset left alignment */
-    right: 3%; /* Align button to the right with 3% spacing */
+    right: 1.5%; /* Align button to the right with 3% spacing */
   }
 `;
 
@@ -224,8 +270,8 @@ export const IconContainerWrap = styled.div`
     display: flex;
     position: fixed;
     background-color: #aaaaaa;
-    right: -3%; // Positioned 3% from the right of the screen
-    bottom: 15%; // Positioned 10% from the bottom of the screen
+    right: -4%; // Positioned 3% from the right of the screen
+    bottom: 25%; // Positioned 10% from the bottom of the screen
     flex-direction: column; // Stack the icons vertically
     justify-content: space-around; // Evenly space the icons vertically
     align-items: center; // Center the icons horizontally
@@ -470,8 +516,10 @@ export const ContactImage = styled.img`
 
 export const ContactCaption = styled.span`
   margin-top: 10px;
-  font-size: 14px;
-  color: #333;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #eee;
 `;
 
 export const ContactFormContainer = styled.div`

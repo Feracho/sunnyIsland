@@ -3,7 +3,9 @@ import React from 'react';
 import { Circle, ExitContainer, Line } from '../GlobalStyles/GlobalElements';
 import storyData from './Data';
 import {
+  BulletList,
   BulletPoint,
+  ImageWrapper,
   OurStoryContainer,
   OurStoryContainerWrapper,
   StoryDescription,
@@ -31,20 +33,23 @@ export function OurStory({ isOpen, onClose }) {
 
       {storyData.map((item, index) => (
         <StorySection key={index}>
-        <StoryImage 
+
+          <ImageWrapper>
+          <StoryImage 
           src={`https://sunnyisland.s3.us-east-2.amazonaws.com/media/images/story/story${index + 1}.png`}
           alt={`Story ${index + 1}`}
         />
+  </ImageWrapper>
           <TextColumn>
             <StoryTopline>{item.topline}</StoryTopline>
             <StoryHeader>{item.header}</StoryHeader>
             <StoryDescription>{item.description}</StoryDescription>
             {item.bullets.length > 0 && (
-              <ul>
+              <BulletList>
                 {item.bullets.map((bullet, idx) => (
                   <BulletPoint key={idx}>{bullet}</BulletPoint>
                 ))}
-              </ul>
+              </BulletList>
             )}
           </TextColumn>
         </StorySection>

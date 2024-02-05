@@ -11,6 +11,13 @@ export const RecipesContainerWrap =  styled.div`
   height: 90vh;
 overflow: hidden;
 
+@media (max-width: 601px) {
+    width: 100vw; /* Keep 80vw width for larger screens */
+    height: 100vh;
+
+    border-radius: 0;
+  }
+
 `
 export const RecipesContainer =  styled.div`
   position: fixed;

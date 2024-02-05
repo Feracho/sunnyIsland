@@ -1,6 +1,6 @@
 // StyledOurStory.js
 import styled from 'styled-components';
-
+import bullet from '../media/SunnyIslandSymbol.png';
 export const OurStoryContainerWrapper = styled.div`
   position: fixed;
   left: 50%;
@@ -9,7 +9,9 @@ export const OurStoryContainerWrapper = styled.div`
   width: 90vw;
   height: 90vh;
   padding: 100px;
-  background: linear-gradient(135deg, #000000, #DA1A35, #000000);
+  background-color: #FBAB7E;
+background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);
+
   overflow: hidden; /* Keep this for vertical scrolling */
   // Hide scrollbar for Chrome, Safari, and Opera
   &::-webkit-scrollbar {
@@ -46,7 +48,9 @@ export const OurStoryContainer = styled.div`
   width: 90vw;
   height: 90vh;
   padding: 100px;
-  background: linear-gradient(135deg, #000000, #DA1A35, #000000);
+  background-color: #FBAB7E;
+background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);
+
   overflow-y: scroll; /* Keep this for vertical scrolling */
   // Hide scrollbar for Chrome, Safari, and Opera
   &::-webkit-scrollbar {
@@ -75,13 +79,25 @@ export const OurStoryContainer = styled.div`
     //overflow: hidden;
   }
 `;
+export const ImageWrapper = styled.div`
+  width: 100%; // Take up all available width
+  display: flex; // Use flexbox for easy centering
+  justify-content: center; // Center horizontally
+  align-items: center; // Center vertically
+  padding: 0 20px; // Add some padding on the sides
+
+  @media (max-width: 600px) {
+    padding: 0 0; // Reduce padding on smaller screens to fit content within viewport margins
+  width: 90vw;
+  }
+`;
+
+// Adjust StoryImage component for responsiveness
 export const StoryImage = styled.img`
-  width: 460px;
-  height: 460px;
+  max-width: 100%; // Ensure it doesn't exceed the wrapper's width
+  height: auto; // Maintain aspect ratio
   object-fit: cover; // Ensures the image covers the area without stretching
-  margin-bottom: 20px; // Add space between the image and the text
   border-radius: 10px; // Optional: Adds rounded corners to the image
-  // Add any other styles as needed
 `;
 
 export const StorySection = styled.div`
@@ -109,28 +125,58 @@ export const TextColumn = styled.div`
   @media (max-width: 600px) {
     order: 1; // Ensure the text appears second
     padding: 0px;
+    width: 85vw;
   }
 `;
 
 export const StoryTopline = styled.h3`
   font-weight: bold;
   color: #F8F03A;
+  font-size: 16.5px;
+  text-transform: uppercase;
+  margin-bottom: -25px;
   // Add additional styles for topline
 `;
 
 export const StoryHeader = styled.h2`
-  font-weight: bold;
+  font-weight: black;
   color: #F8F03A;
+  font-size: 20px;
+  text-transform: uppercase;
+  width: 90vw;
+  margin-bottom: -10px;
   // Add additional styles for header
 `;
 
 export const StoryDescription = styled.p`
   color: white;
+  font-size: 12.5px;
   // Add additional styles for description
 `;
+
+export const BulletList = styled.ul`
+  list-style: none; // Remove default list styling
+  padding: 0px; // Reset padding to align with custom bullets
+  margin: 0; // Adjust margin as needed
+  font-size: 10.5px;
+`;
+
 export const BulletPoint = styled.li`
+  background-image: url(${bullet}); // Use the custom bullet image
+  background-repeat: no-repeat;
+  background-size: 20px 20px; // Adjust size of bullet image as needed
+  background-position: left center;
+  padding: 2px;
+  //padding-left: 30px; // Adjust padding to ensure text does not overlap the bullet image
+  //margin-left: -5%; // Move each bullet point to the left by 5%
   color: white;
-  // Add additional styles for bullet points
+  position: relative;
+left: 10px;
+
+  @media (max-width: 600px) {
+    padding-left: 25px; // Adjust for smaller screens if necessary
+    margin-left: 0; // Adjust margin to fit mobile layout
+  }
 `;
 export const CloseButton = styled.button`
   background-color: transparent;

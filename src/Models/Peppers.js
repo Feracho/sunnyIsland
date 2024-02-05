@@ -88,7 +88,7 @@ export default function Peppers({ speed = 1, count = 80, depth = 80, easing = (x
       ))}
       <Environment preset="sunset" />
       <EffectComposer disableNormalPass multisampling={0}>
-        <DepthOfField target={[0, 0, 60]} focalLength={0.4} bokehScale={14} height={700} />
+        <DepthOfField target={[0, 0, 60]} focalLength={0.4} bokehScale={10} height={700} />
         <ToneMapping />
       </EffectComposer>
     </>

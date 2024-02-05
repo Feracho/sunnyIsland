@@ -1,8 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
 
 import FAQ from '../FAQs/FAQs';
+import { Circle, ExitContainer, Line } from '../GlobalStyles/GlobalElements';
 import { OurStory } from '../OurStory/Story';
 import { Recipes } from '../Recipes/Recipes';
+import contact from '../media/SunnyIslandContactUs.png';
 import logo from '../media/SunnyIslandLogo.png';
 import ComingSoonPopup from './ComingSoon';
 import {
@@ -141,9 +143,15 @@ export function Overlay({inspectMode, flameOn, setFlameOn, setInspectMode, toggl
       {/* Contact Popup */}
       {showContactPopup && (
         <ContactPopup>
+            <ExitContainer className='close-btn'  onClick={() => setShowContactPopup(false)}>
+                <Circle>
+                  <Line className="one" />
+                  <Line className="two" />
+                </Circle>
+            </ExitContainer>
           <ContactImageContainer>
-            <ContactImage src="path_to_your_image.jpg" />
-            <ContactCaption>Your caption here</ContactCaption>
+            <ContactImage src={contact} />
+            <ContactCaption>Hit us up with your questions and concerns!</ContactCaption>
           </ContactImageContainer>
 
           <ContactFormContainer>

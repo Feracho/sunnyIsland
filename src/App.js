@@ -15,6 +15,7 @@ import { easing } from 'maath';
 import { Suspense, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import * as THREE from 'three';
 import './App.css';
+import { GlobalStyle } from './AppElements';
 import PepperSauce from './Models/PepperSauce';
 import Peppers from './Models/Peppers';
 import Logo from './Models/SunnyIslandLogo';
@@ -89,7 +90,7 @@ export default function App() {
   const dprValue = perfSucks ? [1, 1] : [1, 2];
   return (
     <>
-
+<GlobalStyle />
   
  
     <Canvas
