@@ -1,15 +1,14 @@
 import { motion } from 'framer-motion';
 import styled from 'styled-components';
+export const RecipesContainerWrap = styled(motion.div)`
 
-
-export const RecipesContainerWrap =  styled.div`
-  position: fixed;
+position: fixed;
   left: 50%;
   top: 50%; /* Adjust to 50% to center vertically as well */
   transform: translate(-50%, -50%); /* Adjust for both X and Y axis */
   width: 90vw;
   height: 90vh;
-overflow: hidden;
+  overflow: hidden;
 
 @media (max-width: 601px) {
     width: 100vw; /* Keep 80vw width for larger screens */
@@ -17,9 +16,8 @@ overflow: hidden;
 
     border-radius: 0;
   }
-
 `
-export const RecipesContainer =  styled.div`
+export const RecipesContainer = styled.div`
   position: fixed;
   left: 50%;
   top: 50%; /* Adjust to 50% to center vertically as well */
@@ -59,6 +57,7 @@ background-image: linear-gradient(90deg, #FAD961 0%, #F76B1C 100%);
     border-radius: 0;
   }
 `
+
 export const RecipesWrap = styled(motion.div)`
   padding: 100px;
   display: grid;
@@ -138,3 +137,5 @@ export const CloseButton = styled.button`
   top: 20px;
   right: 20px;
 `;
+
+

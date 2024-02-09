@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import styled from 'styled-components';
 export const Background2 = styled.div`
   position: fixed; // Changed from absolute to fixed
@@ -12,7 +13,7 @@ export const Background2 = styled.div`
   z-index: 9999;
 `;
 
-export const Background = styled.div`
+export const Background = styled(motion.div)`
   position: fixed;
   top: 0;
   left: 0;

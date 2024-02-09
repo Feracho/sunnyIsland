@@ -16,9 +16,9 @@ import { Suspense, useEffect, useLayoutEffect, useMemo, useRef, useState } from 
 import * as THREE from 'three';
 import './App.css';
 import { GlobalStyle } from './AppElements';
-import PepperSauce from './Models/PepperSauce';
 import Peppers from './Models/Peppers';
 import Logo from './Models/SunnyIslandLogo';
+import PepperSauce from './Models/SunnyIslandPepperSauce';
 import { Overlay } from './Overlay/Overlay';
 import Preloader from './Preloader/Preloader';
 const innerMaterial = new THREE.MeshStandardMaterial({
@@ -141,7 +141,7 @@ export default function App() {
         </AccumulativeShadows>
       </group>
       
-      <Env perfSucks={perfSucks} />
+ <Env inspectMode={inspectMode} perfSucks={perfSucks} />
 
 
       {showEffectComposer && (
@@ -178,11 +178,11 @@ Authors:
     https://sketchfab.com/3d-models/ikea-pokal-glass-cups-21837e54a14346aa900e1ae719779b86
 */
 
-function Env({ perfSucks }) {
+function Env({ perfSucks, inspectMode }) {
   const ref = useRef()
   useFrame((state, delta) => {
     // Animate the environment as well as the camera
-    if (!perfSucks) {
+    if (!perfSucks && !inspectMode) {
       easing.damp3(ref.current.rotation, [Math.PI / 2, 0, state.clock.elapsedTime / 5 + state.pointer.x], 0.2, delta)
       easing.damp3(state.camera.position, [Math.sin(state.pointer.x / 4) * 9, 1.25 + state.pointer.y, Math.cos(state.pointer.x / 4) * 9], 0.5, delta)
       state.camera.lookAt(0, 0, 0)

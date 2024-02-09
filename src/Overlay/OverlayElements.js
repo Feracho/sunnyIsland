@@ -493,7 +493,7 @@ export const ContactFormHeader = styled.h2`
 
 
 
-export const ContactPopup = styled.div`
+export const ContactPopup = styled(motion.div)`
   position: fixed;
   top: 50%;
   left: 50%;

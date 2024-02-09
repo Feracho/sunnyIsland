@@ -1,7 +1,10 @@
 // StyledOurStory.js
+import { motion } from 'framer-motion';
 import styled from 'styled-components';
 import bullet from '../media/SunnyIslandSymbol.png';
-export const OurStoryContainerWrapper = styled.div`
+
+
+export const OurStoryContainerWrapper = styled(motion.div)`
   position: fixed;
   left: 50%;
   top: 50%; /* Adjust to 50% to center vertically as well */
