@@ -34,7 +34,7 @@ const faqData = [
           answer: "All of our Sunny Island ® Pepper Sauces are shelf stable and do not require refrigeration after opening. However, they will stay fresher longer if stored in the fridge."
         },
         {
-          question: "Why do some of the Texas Pete sauces change color over time? Is the sauce still edible after discoloration?",
+          question: "Why do some of the Sunny Island sauces change color over time? Is the sauce still edible after discoloration?",
           answer: "Discoloration in food products can be caused by air, light, and high temperature. While it might not affect the wholesomeness of the product, if in doubt, throw it out."
         },
         {
