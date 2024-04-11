@@ -11,12 +11,6 @@ export default function PepperSauce(props) {
   return (
     <group ref={group} scale={.0075} {...props} dispose={null}>
       <mesh
-        geometry={nodes.Cylinder.geometry}
-        material={materials['Material.002']}
-        position={[2.13, -58.22, 135.84]}
-        scale={[139.7, 103.96, 139.03]}
-      />
-      <mesh
         geometry={nodes.Material1.geometry}
         material={materials['Mat.1']}
         position={[0, -38.95, 0]}
@@ -33,6 +27,12 @@ export default function PepperSauce(props) {
         material={materials['Mat.5']}
         position={[0, 232.81, 0]}
         scale={[1.19, 1.15, 1.16]}
+      />
+      <mesh
+        geometry={nodes.Cylinder.geometry}
+        material={materials['Material.002']}
+        position={[2.13, -58.22, 135.84]}
+        scale={[139.7, 103.96, 139.03]}
       />
     </group>
   )
